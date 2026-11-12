@@ -2,6 +2,7 @@ package com.mecerintered.springboot;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -28,17 +29,16 @@ public class StudentController {
     }
 
     @GetMapping("/api/v1/students/1")
-    public Student getStudentId() {
+    public Student getStudentId(@PathVariable int studId) {
 
-        int studId = 0;
         for (Student student : getallStudents()) {
 
             studId = student.id();
-            if (student.id() == studId){
+            if (student.id() == studId) {
                 return student;
             }
         }
-        return students.get(0);
+        return null;
     }
 
 }
